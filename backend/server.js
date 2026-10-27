@@ -6,7 +6,7 @@ const cors = require("cors");
 const { Pool } = require("pg");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 
 if (!process.env.DATABASE_URL) {
   throw new Error("Configure DATABASE_URL nas variáveis de ambiente.");
@@ -87,6 +87,7 @@ app.get("/api/projetos/:codigo", async (req, res) => {
     res.status(500).json({ erro: "Erro ao consultar o projeto." });
   }
 });
+
 
 // Salva uma avaliação no Neon
 app.post("/api/avaliacoes", async (req, res) => {
@@ -232,6 +233,7 @@ process.on("SIGTERM", async () => {
   process.exit(0);
 });
 
-app.listen(PORT, () => {
-  console.log(`Ranfy API em execução na porta ${PORT}`);
-});
+
+
+
+app.listen(3000, console.log(`Ranfy API em execução na porta ${PORT}`));
