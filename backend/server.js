@@ -236,4 +236,6 @@ process.on("SIGTERM", async () => {
 
 
 
-app.listen(3000, console.log(`Ranfy API em execução na porta ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
