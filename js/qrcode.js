@@ -19,37 +19,37 @@
     manualStatus.className = `scanner-hint ${tipo}`.trim();
   }
 
-  
-function extrairCodigo(texto) {
-  const conteudo = texto.trim();
 
-  try {
-    const url = new URL(conteudo);
+  function extrairCodigo(texto) {
+    const conteudo = texto.trim();
 
-    // Procura o código nos parâmetros da URL
-    const codigo =
-      url.searchParams.get("projeto") ||
-      url.searchParams.get("codigo") ||
-      url.searchParams.get("code");
+    try {
+      const url = new URL(conteudo);
 
-    if (codigo) {
-      return codigo.trim().toUpperCase();
+      // Procura o código nos parâmetros da URL
+      const codigo =
+        url.searchParams.get("projeto") ||
+        url.searchParams.get("codigo") ||
+        url.searchParams.get("code");
+
+      if (codigo) {
+        return codigo.trim().toUpperCase();
+      }
+
+      // Se a URL não tiver parâmetro, procura o código no caminho
+      const partes = url.pathname.split("/").filter(Boolean);
+      const ultimaParte = partes[partes.length - 1];
+
+      if (/^\d+$/i.test(ultimaParte || "")) {
+        return ultimaParte.toUpperCase();
+      }
+
+      return conteudo;
+    } catch {
+      // Se não for uma URL, trata o conteúdo como código
+      return conteudo.toUpperCase();
     }
-
-    // Se a URL não tiver parâmetro, procura o código no caminho
-    const partes = url.pathname.split("/").filter(Boolean);
-    const ultimaParte = partes[partes.length - 1];
-
-    if (/^\d+$/i.test(ultimaParte || "")) {
-      return ultimaParte.toUpperCase();
-    }
-
-    return conteudo;
-  } catch {
-    // Se não for uma URL, trata o conteúdo como código
-    return conteudo.toUpperCase();
   }
-}
 
 
 
@@ -122,7 +122,7 @@ function extrairCodigo(texto) {
       const projeto = dados.projeto || dados;
 
       const codigoProjeto = String(
-        projeto.codigo_qr || projeto.codigo || ""
+        projeto.codigo || projeto.projeto_codigo || ""
       ).trim().toUpperCase();
 
       if (!codigoProjeto || !projeto.nome) {
