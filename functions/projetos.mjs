@@ -17,9 +17,9 @@ export default async (request) => {
     const sql = neon(process.env.DATABASE_URL);
 
     const projetos = await sql`
-      SELECT id, codigo_qr, nome, area, descricao
+      SELECT id, projeto_codigo, nome, area, descricao
       FROM projetos
-      WHERE codigo_qr = ${codigo}
+      WHERE projeto_codigo = ${codigo}
       LIMIT 1
     `;
 

@@ -40,7 +40,7 @@ function extrairCodigo(texto) {
     const partes = url.pathname.split("/").filter(Boolean);
     const ultimaParte = partes[partes.length - 1];
 
-    if (/^PROJETO_\d+$/i.test(ultimaParte || "")) {
+    if (/^\d+$/i.test(ultimaParte || "")) {
       return ultimaParte.toUpperCase();
     }
 
