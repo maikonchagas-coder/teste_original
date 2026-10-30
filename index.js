@@ -29,7 +29,7 @@ app.get("/select/:param", async (req, res) => {
         const param = req.params.param;
 
         const resultado = await pool.query(
-            `SELECT * FROM projetos WHERE codigo_projeto = 001`
+            `SELECT * FROM projetos WHERE projeto_codigo = 001`
         );
 
         res.json(resultado.rows);
@@ -40,10 +40,6 @@ app.get("/select/:param", async (req, res) => {
     }
     
 });
-
-
-
-
 
 
 app.listen(3000, console.log(`RUnn!!`));

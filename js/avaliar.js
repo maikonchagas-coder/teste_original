@@ -15,9 +15,8 @@
     }
 
     try {
-      const api = window.RANFY_API_URL;
       const resposta = await fetch(
-        `${api}/api/projetos/${encodeURIComponent(codigo)}`
+        `/api/projetos/${encodeURIComponent(codigo)}`
       );
 
       if (resposta.status === 404) {
@@ -70,7 +69,7 @@
 
           const comentario = form.elements.comentario?.value.trim() || "";
 
-          const envio = await fetch(`${api}/api/avaliacoes`, {
+          const envio = await fetch("/api/avaliacoes", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
