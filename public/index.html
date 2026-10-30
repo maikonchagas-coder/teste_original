@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1459a8">
+  <title>Ranfy — Sua opinião faz a diferença</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+
+*{
+  border: 0px;
+  margin: 0px;
+}
+
+
+
+html, body, main{
+  width: 100%;
+  height: 100%;
+}
+
+
+main{
+display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#logo{
+height: 50px;
+
+}
+
+input{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+  </style>
+
+
+</head>
+<body class="page page-login">
+  <main class="login-shell">
+
+
+    <a class="brand brand-image" href="index.html" aria-label="Ranfy, início">
+      <img id="logo" src="assets/senai.png" alt="Ranfy — Mundo SENAI">
+    </a>
+
+
+
+    
+    <section class="login-content" aria-labelledby="page-title">
+
+              <h1 id="page-title">Sua opinião<br>faz a <span class="text-accent">diferença.</span></h1>
+
+
+        <label for="participant-name">Como podemos chamar você?</label>
+        
+        
+        <input id="nome"  name="nome" type="text" placeholder="Digite seu nome" autocomplete="name" required maxlength="80">
+   
+       
+        <button onclick="massa()" class="button button-primary button-wide" type="submit">
+          Continuar <span class="button-arrow" aria-hidden="true">↗</span>
+        </button>
+
+
+
+
+      <p class="lead">Avalie os projetos que estão transformando ideias em inovação no Mundo SENAI.</p>
+
+
+
+    </section>
+
+  </main>
+  <script src="js/login.js"></script>
+  <aside class="pixel-decoration" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></aside>
+
+
+
+<script>
+
+
+function massa()
+{
+  
+  var valor = document.getElementById("nome").value;
+
+  localStorage.setItem("nome", valor);
+
+  window.location.href = "avaliar.html";
+
+}
+
+
+</script>
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>
